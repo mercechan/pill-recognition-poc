@@ -1,0 +1,8 @@
+version: '3.0'
+
+services:
+  pill_poc:
+    build: .
+    image: mercechan/pill_poc:v2
+    ports:
+      - 9595:9595

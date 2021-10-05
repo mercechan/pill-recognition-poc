@@ -1,0 +1,20 @@
+-- build docker images
+docker build -t mercechan/pill_poc:v1 .
+docker push mercechan/pill_poc:v1
+
+
+-- sign in azure
+az login
+az account set -s "MySubscriptionName Here"
+az account set -s "Azure subscription 1"
+
+
+-- create resource group
+az group create -n "pill_recognition_demo_rg" -l "westus"
+-- create container
+az container create -g "pill_recognition_demo_rg" -n "tc-ctrlr-01" --image mercechan/pill_poc:v1 --ports 9595 --ip-address public --dns-name-label tcloud
+-- tailing logs
+az container logs -n "tc-ctrlr-01" -g "pill_recognition_demo_rg" --follow
+
+-- clean up
+az group delete -n "pill_recognition_demo_rg" -y

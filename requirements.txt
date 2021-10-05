@@ -1,0 +1,6 @@
+opencv-python
+Flask
+keras
+tensorflow
+pandas
+openpyxl

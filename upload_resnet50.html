@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>
+        upload pill image
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('form input').change(function () {
+                $('form p').text(this.files[0].name + " selected");
+                document.getElementById('file-image').src = URL.createObjectURL(this.files[0]);
+                $("#file-image").css("display", "block");
+            });
+        });
+    </script>
+</head>
+<body>
+
+
+<form action="http://localhost:9595/resnet50" method="POST" enctype = "multipart/form-data" >
+    <input type="file" name = "file" accept=".jpg">
+    <p>Pill Recognition Using CNN (ResNet50), UPLOAD IMAGE.</p>
+    <button type="submit">Upload</button>
+    <div style="display: flex; justify-content: center;">
+        <img id="file-image" src="#" alt="Preview" style="display: none; text-align: center;">
+    </div>
+</form>
+</body>
+</html>
+
