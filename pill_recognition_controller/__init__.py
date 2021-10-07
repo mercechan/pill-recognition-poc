@@ -77,6 +77,7 @@ def prepare_output(prediction):
                    0.00, 0.00, 0.00, 0.00, 0.00,
                    0.00, 0.00, 0.00, 0.00, 0.00]
     mappings_df["prediction"] = predictions
+    mappings_df = mappings_df.sort_values(by=['Classification'], ascending=True)
     print(mappings_df, file=sys.stderr)
 
     tbl_body = ''
@@ -100,6 +101,7 @@ def prepare_output(prediction):
     tbl_end = '</tbody> </table>'
     tbl_body = tbl_begin + tr_header
 
+    print(prediction)
     for r in prediction:
         ctr = 0
         for i in r:
